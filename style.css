@@ -1,97 +1,101 @@
+:root{
+    --primary: #0a0a0a;
+    --primary-light: #1f1f1f;
+    --secondary-light: #F2f2f2;
+    --secondary: #d9d9d9;
+    --ternary: #ffd700;}
+
+    /* font-family: 'Lobster', cursive; 
+    font-family: 'Ubuntu', sans-serif;*/
+
 *{
-    margin:0px;
-    padding:0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
-nav{
+.max-width{
+    padding: 0rem 5rem;
+}
+/* navbar styling */
+
+.navbar{
+    position: fixed;
+    padding: 1rem 0rem;
+    width: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.navbar.sticky{
+    padding: 0.5rem 0rem;
+    background-color: var(--ternary);
+}
+
+.navbar .max-width{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    min-height: 8vh;
-    background-color: black;
 }
 
-.logo{
-    color: white;
-    letter-spacing: 3px;
-}
-
-.nav-links{
-    display: flex;
-    width:40%;
-    justify-content: space-around;
-}
-
-.nav-links li{
-    list-style: none;
-}
-
-.nav-links a{
-    color: whitesmoke;
+.navbar .logo a{
     text-decoration: none;
-    letter-spacing: 2px;
-    font-size: 0.85rem;
+    font-family: 'Lobster', cursive;
+    color: var(--ternary);
+    font-size: 1.8rem;
+    transition: all 0.5s ease;
+}
+
+.navbar .logo a.sticky{
+    color: var(--primary);
+}
+
+.navbar .menu{
+    display: flex;
+}
+
+.navbar .menu li{
+    list-style: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 3.5rem;
+}
+
+.navbar .menu li.active{
+    color: var(--ternary);
+}
+
+.navbar .menu li a{
+    text-decoration: none;
+    color: var(--secondary);
+    transition: all 0.3s ease;
+}
+
+.navbar .menu li a.sticky{
+    color: var(--primary-light);
+}
+
+.navbar .menu li a:hover{
+    color: var(--secondary-light);
+    font-size: 1.1rem;
+}
+
+.burger div{
+    width: 1.5rem;
+    height: 0.2rem;
+    background-color: var(--secondary);
+    margin: 0.2rem;
+    transition: all 0.3s ease;
+}
+
+.burger div.sticky{
+    background-color: var(--primary-light);
 }
 
 .burger{
     display: none;
     cursor: pointer;
-}
-
-.burger div{
-    width: 20px;
-    height: 2px;
-    background-color: whitesmoke;
-    margin: 4px;
-    transition: all 0.3s ease;
-}
-
-@media screen and (max-width:768px){
-    .nav-links{
-        width:60%;
-    }
-}
-
-@media screen and (max-width:600px){
-    body{
-        overflow-x: hidden;
-    }
-    .nav-links{
-        position: absolute;
-        top: 8vh;
-        right: 0px;
-        height: 92vh;
-        width: 50%;
-        background-color: black;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in;
-    }
-    .nav-links li{
-        opacity: 0;
-    }
-    .burger{
-        display: block;
-    }
-}
-
-.nav-active{
-    transform: translateX(0%);
-}
-
-@keyframes navLinkFade{
-    from{
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to{
-        opacity: 1;
-        transform: translateX(0px);
-    }
 }
 
 .toggle .line1{
@@ -105,8 +109,109 @@ nav{
 .toggle .line3{
     transform: rotate(45deg) translate(-5px,-4px);
 }
+/*_______________________________________________________________________________________________*/
+/* home section styling */
 
-.landpage{
-    height: 92vh;
-    background-color: whitesmoke;
+.home{
+    display: flex;
+    background-image: url('homepage2.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--secondary-light);
+    justify-content: space-between;
+    align-items: center;
 }
+
+.home-content{
+    margin-left: 8rem;
+}
+
+.home .home-content .text-1{
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+.home .home-content .text-2{
+    font-family: 'Lobster', cursive;
+    font-size: 4rem;
+}
+
+.home .home-content .text-3{
+    font-size: 2rem;
+    margin-top: 0.5rem ;
+}
+
+.home .home-content .text-3 span{
+    color: var(--ternary);
+}
+
+
+
+/* responsive media queries started */
+
+@media screen and (max-width:900px){
+    .max-width{
+        padding: 0rem 3rem;
+    }
+
+    .navbar .menu li{
+        margin-left: 2rem;
+    }
+}
+
+@media screen and (max-width:730px){
+
+    .max-width{
+        padding: 0rem, 5rem;
+    }
+    
+    .burger{
+        display: block;
+        z-index: 100;
+    }
+
+    .navbar .menu{
+        background-color: #ffd700;
+        position: fixed;
+        top: 0;
+        left: 100%;
+        height: 100vh;
+        width: 100%;
+        padding-top: 2rem;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        transition: all 0.5s ease-in ; 
+    }
+
+    .navbar .menu li a{
+        color: var(--primary-light);
+    }
+
+    .navbar .menu.active{
+        left: 0;
+    }
+
+}
+
+
+/* animations goes here __________________________________________________________________________*/
+
+@keyframes navLinkFade{
+    0%{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    50%{
+        transform: translateX(-10px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+
+
+
