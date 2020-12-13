@@ -16,20 +16,45 @@
 }
 
 .max-width{
-    padding: 0rem 5rem;
+    padding: 0rem 10rem;
 }
+
+.heading{
+    padding: 3.5rem 0rem 2rem 0rem;
+    font-size: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+hr{
+    border: 1px var(--primary-light) solid;
+    background-color: var(--primary-light);
+    height: 0.2rem;
+    z-index: 500;
+}
+
+.content{
+    padding-top: 5rem;
+}
+
 /* navbar styling */
 
 .navbar{
     position: fixed;
-    padding: 1rem 0rem;
     width: 100%;
+    opacity: 0;
     font-family: 'Ubuntu', sans-serif;
+    animation: landnav 1s ease 1s forwards;
     transition: all 0.3s ease;
+    z-index: 500;
+    font-size: 1.8rem;
+    padding: 3rem 0rem;
+
 }
 
 .navbar.sticky{
-    padding: 0.5rem 0rem;
+    min-height: 8vh;
+    padding: 0.3rem 0rem;
     background-color: var(--ternary);
 }
 
@@ -43,12 +68,17 @@
     text-decoration: none;
     font-family: 'Lobster', cursive;
     color: var(--ternary);
-    font-size: 1.8rem;
+    font-size: 3.5rem;
     transition: all 0.5s ease;
 }
 
 .navbar .logo a.sticky{
     color: var(--primary);
+}
+
+.navbar .logo a:hover{
+    font-size: 1.8em;
+
 }
 
 .navbar .menu{
@@ -78,14 +108,15 @@
 
 .navbar .menu li a:hover{
     color: var(--secondary-light);
-    font-size: 1.1rem;
+    font-size: 2rem;
 }
 
+
 .burger div{
-    width: 1.5rem;
-    height: 0.2rem;
+    width: 4rem;
+    height: 0.5rem;
     background-color: var(--secondary);
-    margin: 0.2rem;
+    margin: 0.4rem;
     transition: all 0.3s ease;
 }
 
@@ -99,7 +130,7 @@
 }
 
 .toggle .line1{
-    transform: rotate(-45deg) translate(-5px,4px);
+    transform: rotate(-45deg) translate(-0.5rem,0.4rem);
 }
 
 .toggle .line2{
@@ -107,39 +138,65 @@
 }
 
 .toggle .line3{
-    transform: rotate(45deg) translate(-5px,-4px);
+    transform: rotate(45deg) translate(-0.5rem,-0.7rem);
 }
 /*_______________________________________________________________________________________________*/
 /* home section styling */
 
 .home{
-    display: flex;
-    background-image: url('https://raw.githubusercontent.com/ashwanikansal/Portfolio/main/homepage2.jpg');
+    background-image: url('https://raw.githubusercontent.com/ashwanikansal/Portfolio/main/background.jpg');
+    /* background-color: var(--primary); */
     height: 100vh;
+    width: 100%;
     background-size: cover;
     background-attachment: fixed;
     color: var(--secondary-light);
-    justify-content: space-between;
+    display: flex;
     align-items: center;
 }
 
+.home .max-width{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.5);
+}
+
 .home-content{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-top: 10rem;
     margin-left: 8rem;
+    min-height: 90vh;
+    /* width: 100%; */
+    overflow: hidden;
+}
+
+.home-content .home-pic img{
+    opacity: 0;
+    animation: landpic 1s ease 0.5s forwards;
+    height: 80vh;
 }
 
 .home .home-content .text-1{
-    font-size: 2rem;
+    opacity: 0;
+    font-size: 4rem;
     margin-top: 2rem;
+    animation: landtext 1s ease forwards;
 }
 
 .home .home-content .text-2{
+    opacity: 0;
     font-family: 'Lobster', cursive;
-    font-size: 4rem;
+    font-size: 8rem;
+    animation: landtext 1s ease 0.5s forwards;
 }
 
 .home .home-content .text-3{
-    font-size: 2rem;
+    opacity: 0;
+    font-size: 4rem;
     margin-top: 0.5rem ;
+    animation: landtext 1s ease 1s forwards;
 }
 
 .home .home-content .text-3 span{
@@ -147,25 +204,211 @@
 }
 
 
+/* About section styling_____________________________________ */
 
-/* responsive media queries started */
+.about{
+    background-color: var(--secondary-light);
+    min-height: 92vh;
+}
 
-@media screen and (max-width:900px){
-    .max-width{
-        padding: 0rem 3rem;
+.about .content{
+    display: grid;
+    column-gap: 10vw ;
+    grid-template-columns: 1fr 2fr;
+}
+
+.about .content .aboutpic{
+    height: 60vh;
+    width:100%;
+    border: var(--ternary) 10px solid;
+    border-radius: 0 50px 0 50px;
+    background-image: url('aboutpic.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 80%;
+    background-position: -20vw 4.5vw;
+    box-shadow: 10px 10px 20px var(--primary-light);
+    /* margin-right: 3rem; */
+}
+
+.about .content .paragraph{
+    font-size: 2rem;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    opacity: 0;
+    transition: all 1s ease;
+    transform: translateY(3rem);
+}
+
+.about .content .paragraph.showing{
+    opacity: 1;
+    transform: translateY(0rem);
+}
+
+.about .content .paragraph h3 span{
+    color: var(--ternary);
+    background-color: #1f1f1f;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px 20px 20px 20px;
+}
+
+/* Skills section styling __________________________________________ */
+
+.skills{
+    height: 80vh;
+    /* background-color: var(--primary); */
+    background-image: url('https://raw.githubusercontent.com/ashwanikansal/Portfolio/main/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.skills .max-width{
+    background-color: rgba(10, 10, 10, 0.92);
+    height: 80vh;
+}
+
+.skills .heading{
+    color: var(--secondary-light);
+}
+
+.skills hr{
+    border: 1px var(--secondary-light) solid;
+    background-color: var(--secondary-light);
+}
+
+.skills .main{
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 1s ease;
+    transform: translateY(3rem);
+}
+
+.skills .main.showing{
+    opacity: 1;
+    transform: translateY(0rem);
+}
+
+.skills .content{
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.skills .content .property{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--secondary-light);
+}
+
+.skills .content .property .skill{
+    position: relative;
+    height: 1rem;
+    width: 70vw;
+    margin-top: 2vh;
+    background-color: var(--primary);
+    border: 0.2rem var(--secondary) solid;
+    border-radius: 0.5rem;
+}
+
+.skills .content .property .skill .s{
+    position: absolute;
+    border-radius: 0.3rem;
+    top: 50%;
+    left: 0;
+    height: 0.6rem;
+    width: 0%;
+    transform: translateY(-50%);
+    background-color: var(--ternary);
+}
+
+
+
+/* responsive media queries started ______________________________ */
+
+@media screen and (max-width:1700px){
+
+    html{
+        font-size: 14px;
     }
 
-    .navbar .menu li{
-        margin-left: 2rem;
+    .home-content .home-pic img{
+        height: 70vh;
+    }
+
+    .about .content .aboutpic{
+        border: var(--ternary) 8px solid;
+        background-position: -20vw 12vw;
+    }
+
+}
+
+@media screen and (max-width:1440px){
+
+    html{
+        font-size: 9px;
+    }
+
+    .home-content .home-pic img{
+        height: 80vh;
+    }
+
+    .about .content .aboutpic{
+        border: var(--ternary) 6px solid;
+        background-position: -20vw 4vw;
     }
 }
 
-@media screen and (max-width:730px){
+@media screen and (max-width:1080px){
 
-    .max-width{
-        padding: 0rem, 5rem;
+    html{
+        font-size: 8px;
     }
-    
+
+    .home-content .home-pic img{
+        height: 75vh;
+    }
+
+    .about .content .aboutpic{
+        border: var(--ternary) 4px solid;
+        border-radius: 0 20px 0 20px;
+        background-position: -20vw 5vw;
+    }
+
+}
+
+@media screen and (max-width:768px){
+
+    html{
+        font-size: 7.2px;
+    }
+
+    .home-content .home-pic img{
+        height: 70vh;
+    }
+
+    .about .content .aboutpic{
+        border: var(--ternary) 3px solid;
+        border-radius: 0 20px 0 20px;
+        background-position: -20vw 7vw;
+    }
+
+}
+
+@media screen and (max-width:700px){
+
+    html{
+        font-size: 7px;
+    }
+
     .burger{
         display: block;
         z-index: 100;
@@ -179,10 +422,15 @@
         height: 100vh;
         width: 100%;
         padding-top: 2rem;
+        font-size: 2.5rem;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
         transition: all 0.5s ease-in ; 
+    }
+
+    .navbar .logo a{
+        font-size: 4rem;
     }
 
     .navbar .menu li a{
@@ -193,6 +441,50 @@
         left: 0;
     }
 
+    .home-content{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+        margin: 3rem 1rem;
+        
+    }
+
+    .home-content .home-pic img{
+        height: 60vh;
+    }
+
+    .about .content{
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
+    }
+
+    .about .content .aboutpic{
+        height: 40vh;
+        border: var(--ternary) 3px solid;
+        background-position: 5vw 5vw;
+        background-size: 90%;
+    }
+
+    .about .content .paragraph{
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+
+}
+
+@media screen and (max-width:425px){
+
+    html{
+        font-size: 6px;
+    }
+
+    .about .content .aboutpic{
+        background-position: -22vw 8vw;
+        background-size: 150%;
+    }
 }
 
 
@@ -212,6 +504,85 @@
     }
 }
 
+@keyframes landnav{
+    0%{
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    50%{
+        transform: translateY(50%);
+        opacity: 0.8;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
+@keyframes landpic{
+    0%{
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    50%{
+        transform: translateX(-10%) skewX(5deg);
+        opacity: 0.8;
+    }
+    100%{
+        transform: translateX(0) skewX(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes landtext{
+    0%{
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50%{
+        transform: translateX(10%) skewX(-20deg);
+        opacity: 0.8;
+    }
+    100%{
+        transform: translateX(0) skewX(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes aphotoshop{
+    0%{
+        width: 0%;
+    }
+    30%{
+        width: 100%;
+    }
+    100%{
+        width: 90%;
+    }
+}
+
+@keyframes aillustrator{
+    0%{
+        width: 0%;
+    }
+    30%{
+        width: 100%;
+    }
+    100%{
+        width: 80%;
+    }
+}
+
+@keyframes acanva{
+    0%{
+        width: 0%;
+    }
+    30%{
+        width: 100%;
+    }
+    100%{
+        width: 80%;
+    }
+}
 
 
