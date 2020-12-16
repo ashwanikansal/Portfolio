@@ -222,7 +222,7 @@ hr{
     width:100%;
     border: var(--ternary) 10px solid;
     border-radius: 0 50px 0 50px;
-    background-image: url('aboutpic.jpg');
+    background-image: url('https://raw.githubusercontent.com/ashwanikansal/Portfolio/main/aboutpic.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 80%;
