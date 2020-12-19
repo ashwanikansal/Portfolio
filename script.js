@@ -15,6 +15,13 @@ const superior = () => {
     const illustrator=document.querySelector('.skills .content .property .skill .illustrator');
     const canva=document.querySelector('.skills .content .property .skill .canva');
 
+    const work=document.querySelector('.work');
+    const picbox=document.querySelectorAll('.work .pic');
+    const pics=document.querySelectorAll('.work .pic img');
+
+    const contact = document.querySelector('.contact');
+    const detail = document.querySelectorAll('.contact .detail');
+
     window.addEventListener('scroll', ()=>{
         const y=window.scrollY;
         if(y>20){
@@ -37,7 +44,6 @@ const superior = () => {
                 lines.classList.remove('sticky');
             })
         }
-        console.log(y);//400
         backupmove.style.backgroundColor = `rgba(10,10,10, ${0.5+y*0.004})`;
         
 
@@ -45,15 +51,30 @@ const superior = () => {
             para.classList.add('showing');
             console.log(para);
         }
-        // else{
-        //     para.classList.remove('showing');
-        // }
 
         if(y > skill.offsetTop/1.3){
             skill.classList.add('showing');
             photoshop.style.animation = `aphotoshop 3s ease 0.6s forwards`;
             illustrator.style.animation = `aillustrator 4s ease 0.8s forwards`;
             canva.style.animation = `acanva 3.5s ease 1s forwards`;
+        }
+
+        if(y > work.offsetTop/1.8){
+
+            picbox.forEach((photo,index)=>{
+                if(y > photo.offsetTop/1.5){
+                    photo.style.animation = `workappear 1s forwards ${index/7}s, fromsepia 1s forwards ${index/7+1}s ease`;
+                }
+                
+            })
+
+        }
+
+        if(y > contact.offsetTop/1.2){
+
+            detail.forEach(det=>{
+                det.classList.add('showing');
+            })
         }
     });
     burger.addEventListener('click',() => {
@@ -71,10 +92,7 @@ const superior = () => {
         burger.classList.toggle('toggle');
         
 });
-    
-//     
-//     
-//     
+       
 }
 
 
