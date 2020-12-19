@@ -3,16 +3,15 @@
     --primary-light: #1f1f1f;
     --secondary-light: #F2f2f2;
     --secondary: #d9d9d9;
-    --ternary: #ffd700;}
-
-    /* font-family: 'Lobster', cursive; 
-    font-family: 'Ubuntu', sans-serif;*/
+    --ternary: #ffd700;
+}
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
+    scroll-behavior: smooth;
 }
 
 .max-width{
@@ -53,8 +52,8 @@ hr{
 }
 
 .navbar.sticky{
-    min-height: 8vh;
-    padding: 0.3rem 0rem;
+    /* min-height: 8vh; */
+    padding: 0.6rem 0rem;
     background-color: var(--ternary);
 }
 
@@ -207,7 +206,7 @@ hr{
 /* About section styling_____________________________________ */
 
 .about{
-    background-color: var(--secondary-light);
+    /* background-color: var(--secondary-light); */
     min-height: 92vh;
 }
 
@@ -258,7 +257,7 @@ hr{
 /* Skills section styling __________________________________________ */
 
 .skills{
-    height: 80vh;
+    height: 62vh;
     /* background-color: var(--primary); */
     background-image: url('https://raw.githubusercontent.com/ashwanikansal/Portfolio/main/back3.jpg');
     background-size: cover;
@@ -267,7 +266,7 @@ hr{
 
 .skills .max-width{
     background-color: rgba(10, 10, 10, 0.92);
-    height: 80vh;
+    height: 62vh;
 }
 
 .skills .heading{
@@ -330,7 +329,120 @@ hr{
     background-color: var(--ternary);
 }
 
+/* work section styling ____________________________________________*/
 
+.work{
+    padding: 0 0 6rem 0;
+}
+
+.work .content{
+    padding: 5rem 1.5rem 0rem 1.5rem;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 0.7rem;
+}
+
+.pic{
+    position: relative;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: scale(0.9);
+    filter: sepia(100%);
+
+}
+
+.pic .title-container{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transition: all 0.5s ease;
+    transform: translate(-50%,-100%);
+    z-index: 5;
+}
+
+.pic .title-container:hover{
+    opacity: 1;
+}
+
+.pic .title-container p{
+    height: 100%;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pic img{
+    text-align: center;
+    width: 100%;
+    transition: all 1s ease;
+}
+
+.pic:hover{
+    transform: scale(0.95);
+
+}
+
+/*Contact section ____________________________________________*/
+
+.contact{
+    height: auto;
+    background-image: url('https://raw.githubusercontent.com/ashwanikansal/Portfolio/main/back3.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.contact .max-width{
+    background-color: rgba(10, 10, 10, 0.92);
+    height: auto;
+}
+
+.contact .heading{
+    color: var(--secondary-light);
+}
+
+.contact hr{
+    border: 1px var(--secondary-light) solid;
+    background-color: var(--secondary-light);
+}
+
+.contact .content{
+    padding-bottom: 5rem;
+    color: var(--secondary-light);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.contact .detail{
+    padding: 3rem;
+    font-size: 1.8rem;
+    justify-self: center;
+    align-self: center;
+    opacity: 0;
+    transition: all 1s ease;
+    transform: translateY(3rem);
+}
+
+.contact .detail.showing{
+    opacity: 1;
+    transform: translateY(0rem);
+}
+
+.contact .detail p{
+    transition: all 0.3s ease;
+}
+
+.contact .detail p:hover{
+    cursor: pointer;
+    color: var(--ternary);
+}
 
 /* responsive media queries started ______________________________ */
 
@@ -383,6 +495,11 @@ hr{
         background-position: -20vw 5vw;
     }
 
+    .work .content{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
 }
 
 @media screen and (max-width:768px){
@@ -399,6 +516,14 @@ hr{
         border: var(--ternary) 3px solid;
         border-radius: 0 20px 0 20px;
         background-position: -20vw 7vw;
+    }
+
+    .contact .content{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact .detail{
+        justify-self: flex-start;
     }
 
 }
@@ -471,6 +596,15 @@ hr{
         flex-direction: column;
         justify-content: space-around;
         align-items: flex-start;
+    }
+
+    .work .content{
+        grid-template-columns: repeat(1, 1fr);
+        gap: 0.7rem;
+    }
+
+    .contact .content{
+        grid-template-columns: repeat(1, 1fr);
     }
 
 }
@@ -585,4 +719,25 @@ hr{
     }
 }
 
+@keyframes fromsepia{
+    from{
+        filter: sepia(100%);
+    }
+    to{
+        filter: sepia(0%);
+    }
+}
+
+@keyframes workappear{
+    0%{
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100%{
+        opacity: 1;
+        transform: scale(1);
+
+    }
+}
 
